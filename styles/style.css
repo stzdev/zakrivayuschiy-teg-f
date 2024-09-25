@@ -17,21 +17,22 @@
 .page {
   display: grid;
   place-content: center;
-  color: var(--textcolor);
-  background-color: var(--bgcolor);
+  color: var(--text-color);
+  background-color: var(--bg-color);
   background-image: var(--gradient);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: 'wght' var(--main-weight, 400);
 }
 
 .decorated-zone {
   width: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
   margin: 0 auto;
   border: 2px solid currentColor;
-  background-color: var(--bgcolor);
+  background-color: var(--bg-color);
 }
 
 .header {
@@ -46,16 +47,16 @@
 .header__logo {
   margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
   margin-block-end: 20px;
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: 100%;
 }
 
 .header__title {
   margin-block-end: 25px;
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   line-height: 100%;
   text-transform: uppercase;
@@ -80,8 +81,8 @@
   position: relative;
   border: none;
   padding: 0;
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: 14px;
   line-height: 14px;
   text-transform: uppercase;
@@ -109,9 +110,6 @@
   position: absolute;
   top: 0;
   left: -20px;
-}
-
-.theme-menu__button:disabled::before {
   animation: pointer 0.5s ease-in-out infinite alternate;
 }
 
@@ -122,7 +120,7 @@
   bottom: -3px;
   display: block;
   height: 2px;
-  background-color: var(--textcolor);
+  background-color: var(--text-color);
   transition: scale 0.3s ease;
   transform-origin: left;
   inline-size: 100%;
@@ -140,16 +138,17 @@
 
 .card {
   display: block;
+  
 }
 
 .card__title {
-  min-height: 31px;
   margin-inline-start: 10px;
-  padding-block: 2px;
-  color: var(--textcolor);
-  font-family: var(--mainfont);
+  padding-block: 4px;
+  color: var(--text-color);
+  font-family: var(--main-font);
   font-size: 18px;
   line-height: 21.78px;
+  font-variation-settings: 'wght' var(--header-weight, 700);
 }
 
 .hard-light {
@@ -160,6 +159,8 @@
   display: block;
   width: 100%;
   height: 100%;
+  border-top: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .card__image-lable {   
@@ -167,27 +168,28 @@
   top: 25px;
   right: 25px;
   opacity: 0.5;
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: 14px;
   line-height: 14px;
-  text-shadow: 1px var(--textshadow);
+  text-shadow: 1px 1px var(--text-shadow);
   mix-blend-mode: hard-light;
 }
 
-  @supports((text-stroke: 1px var(--textshadow)) or (-webkit-text-stroke: 1px var(--textshadow))) {
+  @supports((text-stroke: 1px var(--text-shadow)) or (-webkit-text-stroke: 1px var(--text-shadow))) {
   .card__image-lable {
-  -webkit-text-stroke: 1px var(--textshadow);
+  text-shadow: none;
+  -webkit-text-stroke: 1px var(--text-shadow);
   }
   }
 
 .card__paragraph {
   margin-inline: 25px;
   margin-block-start: 25px;
-  font-family: var(--mainfont);
-  font-weight: var(--mainweight);
+  font-family: var(--main-font);
   font-size: 18px;
   line-height: 21px;
+  font-variation-settings: 'wght' var(--main-weight, 400);
 }
 
 .card__button-container {
@@ -216,7 +218,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px solid var(--textcolor);
+  border: 2px solid var(--text-color);
 }
 /*начальные состояния узлов внутри svg иконки*/
 .like-icon {
@@ -229,7 +231,7 @@
 }
 
 .like-icon .contour {
-  fill: var(--textcolor);
+  fill: var(--text-color);
   transition: fill 0.1s linear;
 }
 
@@ -245,17 +247,17 @@
 
 /*состояния при наличии классa .is-liked для тех же узлов*/
 .like-icon.is-liked .contour {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s 0.06s linear;
 }
 
 .like-icon.is-liked .core {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .main-body {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s 0.05s linear;
 }
 
@@ -271,37 +273,37 @@
 /* параметры анимации для active и hover */
 
 .card__icon-button:hover .core {
-  fill: var(--textcolor);
+  fill: var(--text-color);
   transition: fill 0.3s linear;
 }
 
 .card__icon-button:hover .main-body {
-  fill: var(--textcolor);
+  fill: var(--text-color);
   transition: fill 0.3s 0.05s linear;
 }
 
 .card__icon-button:active .core {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s linear;
 }
 
 .card__icon-button:active .main-body {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s 0.05s linear;
 }
 
 .card__icon-button:hover .like-icon.is-liked .contour {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s 0.06s linear;
 }
 
 .card__icon-button:hover .like-icon.is-liked .core {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s linear;
 }
 
 .card__icon-button:hover .like-icon.is-liked .main-body {
-  fill: var(--heartcolor);
+  fill: var(--heart-color);
   transition: fill 0.3s 0.05s linear;
 }
 
@@ -310,10 +312,10 @@
   height: 100%;
   min-height: 38px;
   border: 2px solid currentColor;
-  font-family: var(--accentfont);
+  font-family: var(--accent-font);
   font-size: 14px;
   line-height: 12.6px;
-  background-color: var(--bgcolor);
+  background-color: var(--bg-color);
 }
 
 .button-style {
@@ -326,7 +328,7 @@
   position: absolute;
   inset: 0;
   display: block;
-  background-color: var(--textcolor);
+  background-color: var(--text-color);
   transition: scale 0.5s ease-in-out;
   transform-origin: left;
   scale: 0 1;
@@ -337,7 +339,7 @@
 }
 
 .button-style:focus {
-  box-shadow: 2px 2px 0px 0px var(--textcolor);
+  box-shadow: 2px 2px 0px 0px var(--text-color);
   outline: none;
 }
 
@@ -348,9 +350,10 @@
   gap: 8px;
   width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
   margin: 0 auto;
+  margin-block-end: clamp(6.25rem, 6.184rem + 0.2817vw, 6.4375rem);
   border: 2px solid currentColor;
   padding-block: 15px;
-  background-color: var(--bgcolor);
+  background-color: var(--bg-color);;
 }
 
 .discet {
@@ -358,19 +361,23 @@
   z-index: 1;
   width: 21px;
   height: 21px;
-  color: var(--buttoncolor);
+  color: var(--button-color);
   mix-blend-mode: difference;
 }
 
 .button__text {
   position: relative;
   z-index: 1;
-  color: var(--buttoncolor);
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  color: var(--button-color);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: 14px;
   line-height: 12.6px;
   mix-blend-mode: difference;
+}
+
+.dialog .button__text {
+  text-transform: uppercase;
 }
 
 .dialog {
@@ -380,14 +387,14 @@
   place-content: center;
   gap: 30px;
   width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
-  min-height: 193px;
-  border: 2px solid var(--textcolor);
-  color: var(--textcolor);
-  font-family: var(--accentfont);
-  font-weight: var(--mainweight);
+  border: 2px solid var(--text-color);
+  padding-block: 30px;
+  color: var(--text-color);
+  font-family: var(--accent-font);
+  font-weight: var(--main-weight);
   font-size: 14px;
   line-height: 21px;
-  background-color: var(--bgcolor);
+  background-color: var(--bg-color);
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -398,7 +405,7 @@ dialog:not([open]) {
 
 .dialog::backdrop {
   opacity: 0.75;
-  background-color: rgb(0 0 0 / 0.3);
+  background-color: rgb(0 0 0);
 }
 
 .dialog__content {
@@ -421,7 +428,7 @@ dialog:not([open]) {
 .close-button {
   width: 100%;
   min-height: 38px;
-  border: 2px solid var(--textcolor);
+  border: 2px solid var(--text-color);
   background-color: transparent;
 }
 
@@ -455,7 +462,7 @@ dialog:not([open]) {
 
 @media (width <= 375px) {
   .theme-menu__list {
-    padding-inline-start: 20px;
+  padding-inline-start: 20px;
 }
 .card__title {
   margin-inline-start: 0px;
