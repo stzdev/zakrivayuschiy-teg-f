@@ -180,6 +180,7 @@
   .card__image-lable {
   text-shadow: none;
   -webkit-text-stroke: 1px var(--text-shadow);
+  text-stroke: 1px var(--text-shadow);
   }
   }
 
@@ -189,7 +190,6 @@
   font-family: var(--main-font);
   font-size: 18px;
   line-height: 21px;
-  font-variation-settings: 'wght' var(--main-weight, 400);
 }
 
 .card__button-container {
